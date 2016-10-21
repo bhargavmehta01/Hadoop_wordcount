@@ -1,6 +1,7 @@
 package hadp;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import org.apache.hadoop.io.IntWritable;
@@ -18,7 +19,9 @@ public class mapdemo extends Mapper<Object, Text, Text, IntWritable>{
       String fname = ((FileSplit) context.getInputSplit()).getPath().getName();
       StringTokenizer itr = new StringTokenizer(value.toString());
       
+      
       while (itr.hasMoreTokens()) {
+    	  
     	  String str = itr.nextToken().toString().toLowerCase();
     	  if(str.contains("education")){
     	        word.set(fname+":education");
@@ -36,6 +39,7 @@ public class mapdemo extends Mapper<Object, Text, Text, IntWritable>{
     	        word.set(fname+":agriculture");
     	        context.write(word, one);   
       	  }
+    	  
       }
     }
 }

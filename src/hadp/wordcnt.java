@@ -14,7 +14,6 @@ public class wordcnt{
 	    Job job = Job.getInstance(conf, "word count");
 	    job.setJarByClass(wordcnt.class);
 	    job.setMapperClass(mapdemo.class);
-	    job.setCombinerClass(reducefn.class);
 	    job.setReducerClass(reducefn.class);
 	    job.setOutputKeyClass(Text.class);
 	    job.setOutputValueClass(IntWritable.class);
